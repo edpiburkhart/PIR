@@ -4,7 +4,7 @@
 \usepackage{biblatex}
 \addbibresource{biblio.bib}
 
-\title{{\small Projet d'Initiation à la Recherche}\\Étude numérique de cas d'instabilités par l'utilisation de métamodèles}
+\title{{\small Projet d'Initiation à la Recherche}\\Étude numérique de cas d'instabilités par l'utilisation de métamodèles\\Numerical study of instability cases using metamodels}
 \author{Edgar Pierre BURKHART\and\textit{Encadrante:} Amélie FAU}
 \date{2019 --- 2020}
 
@@ -16,13 +16,14 @@
 
 \tableofcontents
 
-\chapter{Calcul d'instabilités d'éléments élancés}
+\chapter{Determination of instabilities of slender elements}
 \section{Introduction}
-Dans ce chapitre, on s'intéresse à déterminer les zones d'instabilités au flambement et au déversement d'éléments élancés soumis respectivement à des chargements en compression axiale et en flexion.
-On s'intéressera notamment à l'étude de poutres métalliques et de poteaux en béton armé.
+In this chapter, the goal is to establish instability zones regarding the buckling of columns as welle as flexural-torsionnal buckling of slender elements.
+This study will be mainly focused on steel beams and reinforced concrete columns.
 
-\section{Instabilité au flambement}
-Le flambement est un phénomène d'instabilités qui apparaît lorsqu'un élément structurel élancé est soumis á un chargement en compression. On étudiera ici uniquement des charges compressives axiales centrées (Figure~\ref{fig:flamb}).
+\section{Buckling of columns}
+Buckling of columns can appear when a slender element is subjected to a compression load.
+In this study, only axial centered compressive loads will be considered (Fig.~\ref{fig:flamb}).
 
 \begin{figure}
     \centering
@@ -34,7 +35,7 @@ Le flambement est un phénomène d'instabilités qui apparaît lorsqu'un éléme
         }
         \draw[->] (0,5.5) -- (0,4.5) node[above right]{$P$};
     \end{tikzpicture}
-    \caption{Chargement compressif axial centré.}\label{fig:flamb}
+    \caption{Axial centered compressive load.}\label{fig:flamb}
 \end{figure}
 
 \subsection{Charge d'Euler}
@@ -86,6 +87,16 @@ Voir Figures~\ref{fig:res1}~et~\ref{fig:res2}.
 
 La méthode de Faessel est utilisée pour déterminer la résistance d'un poteau en béton armé vis-à-vis du flambement. Cette méthode se base sur l'existence d'un défaut initial sur l'élément. On calcule en fonction de l'excentricité le moment appliqué ainsi que le moment résistant puis on cherche un point d'intersection qui, s'il existe, détermine le point de fonctionnement du système ainsi définit. Si aucun point d'intersection n'existe, la résistance n'est pas assurée.
 
+This method is a general method used to establish the resistance of a reinforced concrete column under buckling loads.
+It is a non-linear study  taking into account the geometrical non-linearity as well as the non-linearity of the behavior of the materials.
+
+\subsubsection{Steel reinforcements behavior}
+To model the behavior of steel, a curve with a plateau will be considered.
+
+\subsubsection{Concrete behavior}
+The behavior of the concrete parts will be modelled using a simplified Sargin diagram.
+The effects of stretched concrete will be neglected in this approach.
+
 \section{Instabilité au déversement}
 \subsection{Eurocode 3}
 Comme pour le flambement, l'Eurocode 3 donne une méthode permettant de vérifier la résistance au déversement d'un élément métallique.
@@ -97,7 +108,7 @@ Comme pour le flambement, l'Eurocode 3 donne une méthode permettant de vérifie
 \subsubsection{Résultats}
 Voir Figure~\ref{fig:m1}.
 
-\begin{figure}[!ht]
+\begin{figure}[!ht]https://www.deepl.com/translator#fr/en/fluage
     \centering
     \includesvg[width=.8\linewidth]{fig/EC3MEdfy}
     \caption{Eurocode 3 en déversement, $x=M_{Ed}$, $y=f_y$.}\label{fig:m1}
