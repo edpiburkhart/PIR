@@ -1,0 +1,110 @@
+\documentclass{report}
+\usepackage{cours}
+
+\usepackage{biblatex}
+\addbibresource{biblio.bib}
+
+\title{{\small Projet d'Initiation à la Recherche}\\Étude numérique de cas d'instabilités par l'utilisation de métamodèles}
+\author{Edgar Pierre BURKHART\and\textit{Encadrante:} Amélie FAU}
+\date{2019 --- 2020}
+
+\begin{document}
+
+\maketitle
+
+\chapter*{Abstract}
+
+\tableofcontents
+
+\chapter{Calcul d'instabilités d'éléments élancés}
+\section{Introduction}
+Dans ce chapitre, on s'intéresse à déterminer les zones d'instabilités au flambement et au déversement d'éléments élancés soumis respectivement à des chargements en compression axiale et en flexion.
+On s'intéressera notamment à l'étude de poutres métalliques et de poteaux en béton armé.
+
+\section{Instabilité au flambement}
+Le flambement est un phénomène d'instabilités qui apparaît lorsqu'un élément structurel élancé est soumis á un chargement en compression. On étudiera ici uniquement des charges compressives axiales centrées (Figure~\ref{fig:flamb}).
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \draw (0,0) -- (0,4);
+        \draw (-.5,0) -- (.5,0);
+        \foreach \i in {-.5,-.4,...,.6} {
+            \draw (\i,0) -- ++ (-120:.2);
+        }
+        \draw[->] (0,5.5) -- (0,4.5) node[above right]{$P$};
+    \end{tikzpicture}
+    \caption{Chargement compressif axial centré.}\label{fig:flamb}
+\end{figure}
+
+\subsection{Charge d'Euler}
+Par un rapide calcul de l'effort minimal avant instabilité d'une poutre comprimée, on obtient \cite{coursfla}:
+\begin{dmath}
+    P_{cr}=\frac{\pi^2}{k^2L^2}EI
+\end{dmath}
+
+Cette charge critique est appelée charge critique d'Euler. Les paramètres dont elle dépend sont:
+\begin{itemize}
+    \item $l$: longueur de l'élément comprimé,
+    \item $E$: module d'Young du matériau utilisé,
+    \item $I$: moment d'inertie quadratique de la section,
+    \item $k$: paramètre dépendant des liaisons aux extrémités de l'élément étudié.
+\end{itemize}
+
+Cette formulation est valable uniquement dans le cas de poutres dont la rigidité de flexion $EI$ ne varie pas selon la portion de la poutre considérée.
+
+Un instabilité apparaît si la charge appliquée est supérieure à la charge critique d'Euler.
+
+Les valeurs de $k$ sont connues pour des appuis classiques. Dans le cas d'un poteau bi-encastré, $k=\num{.5}$ par exemple. Pour un poteau dont les deux extrémités sont libres en rotation, $k=\num{1}$ \cite{coursfla}.
+
+\subsection{Calculs normatifs de l'Eurocode 3}
+L'Eurocode 3 \cite{EC3} présente une méthode permettant de déterminer l'effort maximal admissible en tête d'un poteau métallique. Dans ce cas, l'objectif n'est plus de déterminer la présence d'instabilités, mais plutôt le risque de rupture.
+
+Les différents paramètres du modèle sont:
+\begin{itemize}
+    \item les dimensions du profilé,
+    \item les liaisons aux extrémités,
+    \item le matériau utilisé (module de Young, résistance).
+\end{itemize}
+
+\subsubsection{Résultats}
+Voir Figures~\ref{fig:res1}~et~\ref{fig:res2}.
+
+\begin{figure}[!ht]
+    \centering
+    \includesvg[width=.8\linewidth]{fig/EC3Slen}
+    \caption{Eurocode 3, $x=S$, $y=L$.}\label{fig:res1}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includesvg[width=.8\linewidth]{fig/EC3NEdfy}
+    \caption{Eurocode 3, $x=N_{Ed}$, $y=f_y$.}\label{fig:res2}
+\end{figure}
+
+\subsection{Méthode de Faessel}
+
+La méthode de Faessel est utilisée pour déterminer la résistance d'un poteau en béton armé vis-à-vis du flambement. Cette méthode se base sur l'existence d'un défaut initial sur l'élément. On calcule en fonction de l'excentricité le moment appliqué ainsi que le moment résistant puis on cherche un point d'intersection qui, s'il existe, détermine le point de fonctionnement du système ainsi définit. Si aucun point d'intersection n'existe, la résistance n'est pas assurée.
+
+\section{Instabilité au déversement}
+\subsection{Eurocode 3}
+Comme pour le flambement, l'Eurocode 3 donne une méthode permettant de vérifier la résistance au déversement d'un élément métallique.
+
+\begin{dmath}
+    M_{cr}=\frac{\pi^2 EI_z}{L^2}\sqrt{\frac{EI_w}{EI_z}+\frac{L^2GI_t}{\pi^2EI_z}}
+\end{dmath}
+
+\subsubsection{Résultats}
+Voir Figure~\ref{fig:m1}.
+
+\begin{figure}[!ht]
+    \centering
+    \includesvg[width=.8\linewidth]{fig/EC3MEdfy}
+    \caption{Eurocode 3 en déversement, $x=M_{Ed}$, $y=f_y$.}\label{fig:m1}
+\end{figure}
+
+\listoffigures
+
+\nocite{*}
+\printbibliography
+\end{document}
