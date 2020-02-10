@@ -97,6 +97,17 @@ To model the behavior of steel, a curve with a plateau will be considered.
 The behavior of the concrete parts will be modelled using a simplified Sargin diagram.
 The effects of stretched concrete will be neglected in this approach.
 
+\subsubsection{First results}
+Compared to the other methods, this one has a much slower execution time. The fact that non-linear are taken into account make this method much more resource intensive than the other ones.
+
+The first results were obtained with 100 points, with an execution time of over 100 seconds. The resulting diagram is show in Figure~\ref{fig:faessel1}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=.6\linewidth]{fig/faessel1}
+  \caption{First results obtained with the Faessel method (N=100).}\label{fig:faessel1}
+\end{figure}
+
 \section{Instabilité au déversement}
 \subsection{Eurocode 3}
 Comme pour le flambement, l'Eurocode 3 donne une méthode permettant de vérifier la résistance au déversement d'un élément métallique.
