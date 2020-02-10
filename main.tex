@@ -100,12 +100,20 @@ The effects of stretched concrete will be neglected in this approach.
 \subsubsection{First results}
 Compared to the other methods, this one has a much slower execution time. The fact that non-linear are taken into account make this method much more resource intensive than the other ones.
 
-The first results were obtained with 100 points, with an execution time of over 100 seconds. The resulting diagram is show in Figure~\ref{fig:faessel1}.
+The first results were obtained with 100 points, with an execution time of over 100 seconds. The resulting diagram is show in Figure~\ref{fig:faessel2}.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=.6\linewidth]{fig/faessel1}
-  \caption{First results obtained with the Faessel method (N=100).}\label{fig:faessel1}
+  \includegraphics[width=.6\linewidth]{fig/faessel2}
+  \caption{First results obtained with the Faessel method (N=100).}\label{fig:faessel2}
+\end{figure}
+
+In order to get better results, another calculation was done with \num{1000} points, giving more accurate results at the cost of a longer execution time (Figure~\ref{fig:faessel3}).
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=.6\linewidth]{fig/faessel3}
+  \caption{Results for the Faessel method (N=1000).}\label{fig:faessel3}
 \end{figure}
 
 \section{Instabilité au déversement}
