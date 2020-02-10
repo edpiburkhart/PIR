@@ -97,6 +97,10 @@ To model the behavior of steel, a curve with a plateau will be considered.
 The behavior of the concrete parts will be modelled using a simplified Sargin diagram.
 The effects of stretched concrete will be neglected in this approach.
 
+\subsubsection{Implementation}
+The Faessel method will be implemented in Python using the \texttt{NumPy} module in order to have adapted data storage types.
+The calculation points will be determined using the Latin-Hypercube Sampling method.
+
 \subsubsection{First results}
 Compared to the other methods, this one has a much slower execution time. The fact that non-linear are taken into account make this method much more resource intensive than the other ones.
 
